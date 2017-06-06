@@ -4,11 +4,11 @@
 // about the code splitting business
 
 import React from 'react';
-import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import AsyncRoute from 'routing/AsyncRoute';
+import AsyncSwitch from 'routing/AsyncSwitch';
 import { makeSelectLocation } from 'containers/App/selectors';
 
 import loadHomePage from 'containers/HomePage/loader';
@@ -17,7 +17,7 @@ import loadNotFoundPage from 'containers/NotFoundPage/loader';
 
 function Routes({ location }) {
   return (
-    <Switch location={location}>
+    <AsyncSwitch location={location}>
       <AsyncRoute
         exact path="/" load={loadHomePage}
       />
@@ -27,7 +27,7 @@ function Routes({ location }) {
       <AsyncRoute
         path="" load={loadNotFoundPage}
       />
-    </Switch>
+    </AsyncSwitch>
   );
 }
 
